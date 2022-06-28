@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        int n = 0;
+        vector<vector<int>> ans;
+        while(n <= rowIndex){
+            vector<int> helper(n+1, 1);
+            for(int i=1; i<n; i++){
+                helper[i] = ans[n-1][i-1]+ans[n-1][i];
+            }
+            ans.push_back(helper);
+            n++;
+        }
+        return ans[rowIndex];
+    }
+};
