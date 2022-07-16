@@ -1,0 +1,17 @@
+int Solution::solve(vector<int> &A, int B) {
+    unordered_map<int, int> mpp;
+    int count = 0;
+    int curXor = 0;
+    for(int i=0; i<A.size(); i++){
+        curXor ^= A[i];
+        if(curXor == B){
+            count++;
+        }
+        if(mpp.find(curXor) != mpp.end()){
+            count += mpp[curXor];
+        }
+        int y = curXor^B;
+        mpp[y]++;
+    }
+    return count;
+}
